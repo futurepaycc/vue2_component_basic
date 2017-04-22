@@ -11,7 +11,8 @@ var App = Vue.extend({
     template: '#app_template',
 })
 
-var Hello = Vue.component('hello', {
+//组件声明和注册一体化
+var Hello = Vue.component('hello', { 
     template: '#hello_template',
     data: function () { //传统写法，尽量使用es5
         return {
