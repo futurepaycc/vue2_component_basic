@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 内容区-->
+    <div id="app"></div>
+
+    <!-- 模板区-->
+    <script type="text/x-template" id="app_template">
+        <div> <!-- 这个根组件，一定要存在且唯一 -->
+            <p>app content</p>
+            <hello></hello>
+        </div>
+    </script>
+    <script type="text/x-template" id="hello_template">
+        <div>
+            <p>{{msg}}</p> 
+            <button @click="click">点我啊</button>
+        </div><!-- 若要展示多个元素，也一定要有一个根组件 -->
+    </script>
+
+    <!-- 组件库区 -->
+    <script src="vue.js"></script>
+    <script src="first.js"></script>
+</body>
+
+</html>
