@@ -1,22 +1,25 @@
-var Home = {template:"<div>home template content</div>"}
+const NotFound = { template: '<p>没有找到</p>' }
+const Home = { template: '<p>home page</p>' }
+const About = { template: '<p>about page</p>' }
 
-var About = {template:"<div>about template content</div>"}
-
-var routes = {
-    '/':Home,
-    '/about':About
+const routes = {
+    '/': Home,
+    '/about': About
 }
 
-//组件定义
-var App = Vue.extend({           
-    template:"#app_template"
+new Vue({
+    el: '#app',
+    data: {
+        currentRoute: window.location.pathname
+    },
+    computed: {
+        ViewComponent() {
+            return routes[this.currentRoute] || NotFound
+        }
+    },
+    render(h) { return h(this.ViewComponent) }
 })
 
-//组件实例化，挂载组件
-var app = new App({
-    el:"#app",
-    components:{
-        'home':Home,  //局部组件注册之快捷方式
-        'about':About
-    }
+window.addEventListener('popstate', () => {
+  app.currentRoute = window.location.pathname
 })
